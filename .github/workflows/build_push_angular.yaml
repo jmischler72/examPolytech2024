@@ -11,9 +11,10 @@ on:
     branches:
       - main
 
-env:
-  REGISTRY: rg.fr-par.scw.cloud/exampolytech2024
-  IMAGE_NAME: ${{ github.repository }}
+
+defaults:
+  run:
+    working-directory: ./angular
 
 jobs:
   build:
@@ -26,19 +27,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.SECRET_KEY }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-        with:
-          context: .
-          file: angular/Dockerfile
-          tags: ${{ env.REGISTRY }}/joffrey-front-exam:latest
+          node-version: '10.x'
+      - run: npm install
+      - run: npm run build --if-present
 
 
 
