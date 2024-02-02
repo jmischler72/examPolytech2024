@@ -1,0 +1,70 @@
+services:
+  database:
+    image: mysql:8.0.36-debian
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=myDatabase
+      - MYSQL_USER=databaseUser
+      - MYSQL_PASSWORD=databasePassword
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - network
+    healthcheck:
+      test: pg_isready -U databaseUser -d myDatabase
+      interval: 5s
+      timeout: 3s
+      retries: 3
+#  minio:
+#    image: 'bitnami/minio:latest'
+#    ports:
+#      - 9000:9000
+#      - 9001:9001
+#    environment:
+#      - MINIO_ROOT_USER=minio-root-user
+#      - MINIO_ROOT_PASSWORD=minio-root-password
+#      - MINIO_DEFAULT_BUCKETS=examillustrations,examphotos
+#    networks:
+#      - network
+#    volumes:
+#      - minio:/bitnami/minio/data
+#  back:
+#    image: back
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      database:
+#        condition: service_healthy
+#        restart: true
+#    environment:
+#      - spring.datasource.password=databasePassword
+#      - spring.datasource.username=databaseUser
+#      - spring.datasource.url=jdbc:postgresql://postgres:5432/myDatabase
+#      - s3.access_key=mv4YuliZ3286JxpPqPBm
+#      - s3.secret_key=JpdgHkEJ0BA3DXTax1fK3nkrpj6rcFHkZgUSimrK
+#      - s3.hostname=http://192.168.1.45:9000
+#
+#    networks:
+#      - network
+#    healthcheck:
+#      test: curl http://localhost:8080/actuator/health
+#      interval: 10s
+#      timeout: 3s
+#      retries: 3
+#  front:
+#    image: front
+#    ports:
+#      - 8888:80
+#    environment:
+#      - BACKEND_URL=http://localhost:8080
+#    networks:
+#      - network
+
+
+volumes:
+  database:
+#  minio:
+
+networks:
+  network:
