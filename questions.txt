@@ -1,0 +1,4 @@
+ 16) Qu'est ce que Docker ? A quoi cela sert-il ?
+
+ Docker sert à conteneuriser des applications, cela permet de lancer l'application dans le même environnement peu
+ importe la machine sur lequel il sera lancé
