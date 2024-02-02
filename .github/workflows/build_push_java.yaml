@@ -11,6 +11,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: ./java
+
 env:
   REGISTRY: rg.fr-par.scw.cloud/exampolytech2024
   IMAGE_NAME: ${{ github.repository }}
@@ -36,7 +40,7 @@ jobs:
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
           context: .
-          file: java/Dockerfile
+          file: Dockerfile
           tags: ${{ env.REGISTRY }}/joffrey-back-exam:latest
 
 
