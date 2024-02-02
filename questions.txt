@@ -2,3 +2,28 @@
 
  Docker sert à conteneuriser des applications, cela permet de lancer l'application dans le même environnement peu
  importe la machine sur lequel il sera lancé
+
+ 17) Qu'est ce que la CI et la CD ? Pourquoi est-ce utile ?
+
+ La CI/CD permet d'accélerer les tests dans le temps de développement afin d'être sûr du code qui va partir en production
+En effet on peut imaginer une pipeline qui va executer des tests chaque fois qu'on push du code sur une branche de dev
+et ensuite une autre pipeline qui va deployer ce code quand il sera push sur une branche main
+
+18) Qu'avez vous pensez du cours ?
+
+Le cours était très bien, même en ayant déjà fait pas mal de DevOps avec Docker et Github Actions, j'ai tout de même appris
+des choses.
+  _____________________
+ < trop cool le DEVOPS >
+  --------------------
+     \
+      \
+       \
+                     ##        .
+               ## ## ##       ==
+            ## ## ## ##      ===
+        /""""""""""""""""___/ ===
+   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~
+        \______ o          __/
+         \    \        __/
+           \____\______/
