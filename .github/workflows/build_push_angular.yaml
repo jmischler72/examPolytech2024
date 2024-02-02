@@ -11,10 +11,6 @@ on:
     branches:
       - main
 
-defaults:
-  run:
-    working-directory: ./angular
-
 env:
   REGISTRY: rg.fr-par.scw.cloud/exampolytech2024
   IMAGE_NAME: ${{ github.repository }}
@@ -41,7 +37,7 @@ jobs:
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
           context: .
-          file: Dockerfile
+          file: angular/Dockerfile
           tags: ${{ env.REGISTRY }}/joffrey-front-exam:latest
 
 
